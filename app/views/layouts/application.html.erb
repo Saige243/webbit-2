@@ -81,7 +81,7 @@
                         <%= current_user.email ||= current_user.username %>
                         <%= render_svg "icons/chevron-down" %>
                       <% end %>
-                      <ul class="hidden">
+                      <ul class="">
                         <li>
                           <%= link_to "#", class: "hover:bg-indigo-600 hover:text-white text-gray-700 no-underline block py-2 px-4 flex items-center text-sm" do %>
                             <%= render_svg "icons/user", class: "w-5 h-5 fill-current text-gray-600 mr-3" %>
