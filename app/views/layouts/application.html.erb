@@ -11,7 +11,7 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
   </head>
 
-  <body class="bg-gray-200 relative h-screen overflow-x-hidden">
+  <body class="bg-gray-200 relative h-screen overflow-x-hidden accent-indigo-600">
 
     <% flash.each do |type, message| %>
       <% if type =="alert" %>
@@ -109,7 +109,7 @@
                   <%= link_to "Login", new_user_session_path, class: "btn btn-outline btn-small mr-2 text-sm" %>
                   <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-indigo btn-small text-sm" %>
                 </div>
-                <% end %>
+              <% end %>
             </div>
 
           </div>
@@ -117,7 +117,7 @@
 
       </div>
     </nav>
-    <div class="containier mx-auto py-6" >
+    <div class="container mx-auto py-6 px-6">
       <%= yield %>
     </div>
   </body>
