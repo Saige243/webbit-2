@@ -76,3 +76,5 @@ gem 'tailwindcss-rails', '~> 2.3'
 gem 'image_processing', '~> 1.12', '>= 1.12.2'
 
 gem 'inline_svg', '~> 1.9'
+
+gem 'image_magick', '~> 0.1.9'

@@ -1,6 +1,4 @@
 <% content_for :primary_content do %>
-  <h1>Submissions</h1>
-
   <% if @submissions.any? %>
     <div id="submissions">
       <ul class="divide-y">
@@ -10,7 +8,11 @@
       </ul>
     </div>
   <% else %>
-    <p>No submissions yet.</p>
+    <div class="py-6 text-center">
+      <span class="flex justify-center pb-4"><%= render_svg "icons/empty" %></span>
+      <p class="mb-4">No submissions yet.</p>
+      <%= link_to "Create a new submission", new_submission_path, class: "btn btn-indigo" %>
+    </div>
   <% end %>
 <% end %>
 
