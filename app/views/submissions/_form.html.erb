@@ -1,6 +1,6 @@
 <%= form_with(model: submission, class: "contents") do |form| %>
   <% if submission.errors.any? %>
-    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+    <div id="error_explanation" class="bg-red-50 text-red-700 p-4 rounded border border-red-300 mb-6">
       <h2><%= pluralize(submission.errors.count, "error") %> prohibited this submission from being saved:</h2>
 
       <ul>
@@ -11,32 +11,27 @@
     </div>
   <% end %>
 
-  <div class="my-5">
+  <div class="mb-5">
     <%= form.label :title %>
-    <%= form.text_field :title, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.text_field :title, class: "input" %>
   </div>
 
-  <div class="my-5">
+  <div class="mb-5">
     <%= form.label :body %>
-    <%= form.text_area :body, rows: 4, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.text_area :body, rows: 4, class: "input" %>
   </div>
 
-  <div class="my-5">
+  <div class="mb-5">
     <%= form.label :url %>
-    <%= form.text_field :url, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.text_field :url, class: "input" %>
   </div>
 
-  <div class="my-5">
-    <%= form.label :media %>
-    <%= form.file_field :media, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  <div class="mb-5">
+    <%= form.label :media do %>
+    <span class="mb-1 inline-block">Attach a video or image</span>
+    <%= form.file_field :media, class: "block w-full text-sm text-gray-500 filie:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100" %>
+    <% end %>
   </div>
 
-  <div class="my-5">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div class="inline">
-    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
-  </div>
+  <%= form.submit class: "btn btn-indigo" %>
 <% end %>
