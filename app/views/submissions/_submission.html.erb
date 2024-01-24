@@ -1,32 +1,43 @@
-<div id="<%= dom_id submission %>">
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Title:</strong>
-    <%= submission.title %>
-  </p>
+<li id="<%= dom_id submission%>">
+  <div class="py-3 flex items-center flex-wrap">
+    <div>
+      <% if submission.media.attached? %>
+        <% if submission.media.video? %>
+          <%= video_tag submission.media %>
+        <% else %>
+          <%= image_tag submission.media, alt: submission.title, class: "" %>
+        <% end %>
+      <% end %>
+    </div>
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Body:</strong>
-    <%= submission.body %>
-  </p>
+    <div class="<% "pl-4" if submission.media.attached? %>">
+      <h3 class="mb-1 flex flex-wrap  items-center text-xl">
+        <%= link_to submission.title, submission, class: "no-underline" %>
+        <% if submission.url? %>
+          <span class="pl-2 text-xs font-normal font-mono text-indigo-400 tracking-tighter" >
+            <%= truncate(submission.url, length: 18) %>
+          </span>
+        <% end %>
+      </h3>
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Url:</strong>
-    <%= submission.url %>
-  </p>
+    <% if submission.body? %>
+      <div class="text-sm text-gray-700">
+        <%= truncate(submission.body, length: 140) %>
+      </div>
+    <% end %>
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Media:</strong>
-    <%= link_to submission.media.filename, submission.media if submission.media.attached? %>
-  </p>
+    <% if user_signed_in? && current_user.id == submission.user.id %>
+      <div class="pt-4 flex flex-wrap items-center">
+        <%= link_to edit_submission_path(submission), class: "no-underline mr-2" do %>
+          <%= render_svg "icons/edit", title: "Edit", class: "w-5 h-5 fill-current text-gray-400 hover:text-indigo-600" %>
+        <% end %>
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1">User:</strong>
-    <%= submission.user_id %>
-  </p>
+        <%= link_to submission_path(submission), method: :delete, class: "no-underline mr-2" do %>
+          <%= render_svg "icons/delete", title: "Delete", class: "w-5 h-5 fill-current text-gray-400 hover:text-indigo-600" %>
+        <% end%>
+      </div>
+    <% end %>
 
-  <% if action_name != "show" %>
-    <%= link_to "Show this submission", submission, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= link_to "Edit this submission", edit_submission_path(submission), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
-    <hr class="mt-6">
-  <% end %>
-</div>
+    </div>
+  </div>
+</li>
