@@ -28,7 +28,7 @@
 
     <label for="submission_type">Submission type</label>
     <nav role="submission type" class="mb-6">
-      <ul class="divide-x grid grid-cols-3 gap-0 border rounded shadow-sm">
+      <ul class="lg:divide-x divide-y grid grid-cols-1 lg:grid-cols-3 gap-0 border rounded shadow-sm">
         <li>
           <a data-action="click->tabs#toggle" href="#" class="p-3 flex items-center justify-center group hover:text-indigo-600" data-tabs-target="button" data-tab-id="text">
             <%= render_svg "icons/text", class: "group-hover:text-indigo-600 text-gray-500 w-5 h-5 fill-current mr-2" %>
@@ -36,7 +36,7 @@
           </a>
         </li>
         <li>
-          <a data-action="click->tabs#toggle" href="#" class="p-3 flex items-center justify-center group hover:text-indigo-600" data-tabs-target="button" data-tab-id="link">
+          <a data-action="click->tabs#toggle" href="#" class="p-3 flex items-center justify-center group hover:text-indigo-600" data-tabs-target="button" data-tab-id="url">
             <%= render_svg "icons/link", class: "group-hover:text-indigo-600 text-gray-500 w-5 h-5 fill-current mr-2" %>
               URL
           </a>
@@ -51,12 +51,12 @@
     </nav>
 
 
-  <div data-tabs-target="text">
     <div class="mb-5">
       <%= form.label :title %>
       <%= form.text_field :title, class: "input" %>
     </div>
 
+  <div data-tabs-target="text">
     <div class="mb-5">
       <%= form.label :body %>
       <%= form.text_area :body, rows: 4, class: "input" %>
